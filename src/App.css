@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  transition: background 1s ease;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container spanning full viewport */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Theme backgrounds */
+.normal-bg {
+  background: #f5f5f5;
+  color: #333;
+}
+.romantic-bg1 {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: #5b2c6f;
+}
+.romantic-bg2 {
+  background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  color: #4a148c;
+}
+
+/* Ensure html, body and container fill full viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Make the container fully cover the screen */
+.app-container.final-bg {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* Adjust background image to cover without cutting */
+.final-bg {
+  background-image: url('/public/background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+/* Inputs & buttons */
+input {
+  padding: 10px;
+  width: 250px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+button {
+  padding: 10px 25px;
+  font-size: 16px;
+  background-color: #ff6f91;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 111, 145, 0.6);
+  transition: transform 0.2s ease;
+}
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Sections styling */
+.question-section {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.letter-section {
+  max-width: 800px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 2s ease-in;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation-name: floatUp;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  left: -10px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--tx)) translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* PHONE STYLES */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px;
+  }
+  input {
+    width: 90%;
+    font-size: 14px;
+    padding: 12px;
+  }
+  button {
+    width: 90%;
+    font-size: 14px;
+    padding: 12px;
+  }
+  .question-section {
+    padding: 15px;
+  }
+  .letter-section {
+    padding: 25px;
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  button, input {
+    padding: 10px;
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .letter-section {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+}
